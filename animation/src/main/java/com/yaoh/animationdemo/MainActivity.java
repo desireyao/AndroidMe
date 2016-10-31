@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        set.start();
 //         ObjectAnimator.ofFloat(img, "rotationY", 0.0f, 70.0f).setDuration(1000).start();
 
+        //测试属性动画
         PropertyValuesHolder a1 = PropertyValuesHolder.ofFloat("alpha", 0f, 1f);
         PropertyValuesHolder a2 = PropertyValuesHolder.ofFloat("translationY", 0, 500);
         PropertyValuesHolder a3 = PropertyValuesHolder.ofFloat("translationX", 0, 500);
