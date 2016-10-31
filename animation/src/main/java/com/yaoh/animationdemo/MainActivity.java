@@ -24,12 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         img = (ImageView) findViewById(R.id.img);
         btn = (Button) findViewById(R.id.btn);
-
         btn.setOnClickListener(this);
     }
-
-
-
 
     @Override
     public void onClick(View v) {
