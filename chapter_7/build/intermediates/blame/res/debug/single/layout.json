@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\build\\intermediates\\res\\merged\\debug\\layout\\demo_2.xml",
+        "source": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\src\\main\\res\\layout\\demo_2.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\build\\intermediates\\res\\merged\\debug\\layout\\content_layout.xml",
+        "source": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\src\\main\\res\\layout\\content_layout.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\build\\intermediates\\res\\merged\\debug\\layout\\content_list_item.xml",
+        "source": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\src\\main\\res\\layout\\content_list_item.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\build\\intermediates\\res\\merged\\debug\\layout\\demo_1.xml",
+        "source": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\src\\main\\res\\layout\\demo_1.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\build\\intermediates\\res\\merged\\debug\\layout\\content_list_item.xml",
+        "source": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\src\\main\\res\\layout\\content_list_item.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\build\\intermediates\\res\\merged\\debug\\layout\\activity_test.xml",
+        "source": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\src\\main\\res\\layout\\activity_test.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\build\\intermediates\\res\\merged\\debug\\layout\\demo_1.xml",
+        "source": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\src\\main\\res\\layout\\demo_1.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\build\\intermediates\\res\\merged\\debug\\layout\\activity_test.xml",
+        "source": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\src\\main\\res\\layout\\activity_test.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\build\\intermediates\\res\\merged\\debug\\layout\\content_layout.xml",
+        "source": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\src\\main\\res\\layout\\content_layout.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\build\\intermediates\\res\\merged\\debug\\layout\\demo_2.xml",
+        "source": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\src\\main\\res\\layout\\demo_2.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\src\\main\\res\\layout\\activity_main.xml"
+    }
+]

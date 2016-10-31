@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<com.yaoh.view.view.TiteleView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--/>-->
+    <!--<com.yaoh.view.view.CustomViewOne-->
+    <!--android:layout_width="200dp"-->
+    <!--android:layout_height="200dp"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--/>-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/layout_Tab_Current_Ble_Status"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginEnd="16dp"-->
+    <!--android:layout_marginStart="16dp"-->
+    <!--android:layout_marginTop="16dp"-->
+    <!--android:orientation="vertical"-->
+    <!--android:visibility="gone">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@mipmap/ic_launcher" />-->
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@mipmap/ic_launcher" />-->
+
+    <!--</LinearLayout>-->
+
+    <com.yaoh.view.view.CustomCycleView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

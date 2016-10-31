@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\build\\intermediates\\res\\merged\\debug\\anim\\anim_layout.xml",
+        "source": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\src\\main\\res\\anim\\anim_layout.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\build\\intermediates\\res\\merged\\debug\\anim\\enter_anim.xml",
+        "source": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\src\\main\\res\\anim\\enter_anim.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\build\\intermediates\\res\\merged\\debug\\anim\\translate.xml",
+        "source": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\src\\main\\res\\anim\\translate.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\build\\intermediates\\res\\merged\\debug\\anim\\anim_item.xml",
+        "source": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\src\\main\\res\\anim\\anim_item.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\build\\intermediates\\res\\merged\\debug\\anim\\exit_anim.xml",
+        "source": "D:\\AndroidProjectsMy\\AndroidMe\\chapter_7\\src\\main\\res\\anim\\exit_anim.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\build\\intermediates\\res\\merged\\debug\\anim\\anim_layout.xml",
+        "source": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\src\\main\\res\\anim\\anim_layout.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\build\\intermediates\\res\\merged\\debug\\anim\\exit_anim.xml",
+        "source": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\src\\main\\res\\anim\\exit_anim.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\build\\intermediates\\res\\merged\\debug\\anim\\translate.xml",
+        "source": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\src\\main\\res\\anim\\translate.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\build\\intermediates\\res\\merged\\debug\\anim\\anim_item.xml",
+        "source": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\src\\main\\res\\anim\\anim_item.xml"
+    },
+    {
+        "merged": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\build\\intermediates\\res\\merged\\debug\\anim\\enter_anim.xml",
+        "source": "D:\\AndroidProjectsMy\\CustomView\\chapter_7\\src\\main\\res\\anim\\enter_anim.xml"
+    }
+]

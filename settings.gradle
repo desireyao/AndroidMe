@@ -1,0 +1,2 @@
+include ':toolbar', ':horizontalprogressbarwithnumber', ':animation', ':percentLayout', ':view', ':testjava', ':serviceTEST'
+include ':chapter_7'
