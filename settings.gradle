@@ -1,2 +1,2 @@
-include ':toolbar', ':horizontalprogressbarwithnumber', ':animation', ':percentLayout', ':view', ':testjava', ':serviceTEST'
+include ':toolbar', ':horizontalprogressbarwithnumber', ':animation', ':percentLayout', ':view', ':testjava', ':serviceTEST', ':code'
 include ':chapter_7'
