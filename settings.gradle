@@ -1,2 +1,2 @@
-include ':toolbar', ':horizontalprogressbarwithnumber', ':animation', ':percentLayout', ':view', ':testjava', ':serviceTEST', ':code'
+include ':toolbar', ':horizontalprogressbarwithnumber', ':animation', ':percentLayout', ':view', ':testjava', ':serviceTEST', ':code', ':baiduMapTest'
 include ':chapter_7'
