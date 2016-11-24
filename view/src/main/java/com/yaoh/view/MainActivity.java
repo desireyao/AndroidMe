@@ -1,5 +1,7 @@
 package com.yaoh.view;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.app.ActionBar;
@@ -9,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.yaoh.view.view.CustomViewOne;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,7 +25,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_main);
+
+        CustomViewOne view = (CustomViewOne) findViewById(R.id.view);
+        ObjectAnimator _x = ObjectAnimator.ofFloat(view, "scaleX", 0.8f, 3, 0.8f);
+        ObjectAnimator _y = ObjectAnimator.ofFloat(view, "scaleY", 0.8f, 3, 0.8f);
+
+        AnimatorSet animSet = new  AnimatorSet();
+        animSet.setDuration(2000);
+        animSet.playTogether(_x, _y);
+        animSet.start();
 
 //        ButterKnife.bind(this);
 //        btn.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private void setImmerVison() {
         if (Build.VERSION.SDK_INT >= 21) {
-
             View decorView = getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
             decorView.setSystemUiVisibility(option);

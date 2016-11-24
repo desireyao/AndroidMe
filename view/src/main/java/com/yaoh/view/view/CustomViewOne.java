@@ -56,7 +56,7 @@ public class CustomViewOne extends View{
         //绘制矩形
         mPaint.setStrokeWidth(5);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setColor(Color.BLACK);
+        mPaint.setColor(Color.GREEN);
 //        canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
         canvas.drawRect(new Rect(0, 0, getMeasuredWidth(), getMeasuredHeight()),mPaint);
 

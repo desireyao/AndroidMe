@@ -10,8 +10,11 @@ public class MyClass {
 //        for (int i = 0; i < 10; i ++){
 //            new Thread(new Task()).start();
 //        }
-        testByte();
+//        testByte();
 
+        int a = Integer.MAX_VALUE;
+        int b = (int)30 * 24 * 60 * 60 * 1000;
+        System.out.print("a:" + a + " b:" + b);
     }
 
     static class Task implements Runnable{

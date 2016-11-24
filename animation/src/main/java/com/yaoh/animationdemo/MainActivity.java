@@ -25,14 +25,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-//
 //      Animation animation = AnimationUtils.loadAnimation(this,R.anim.set_group);
 //      img.startAnimation(animation);
 
-//        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(this,R.animator.property_animator);
-//        set.setTarget(this);
-//        set.start();
-//         ObjectAnimator.ofFloat(img, "rotationY", 0.0f, 70.0f).setDuration(1000).start();
+//      AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(this,R.animator.property_animator);
+//      set.setTarget(this);
+//      set.start();
+//      ObjectAnimator.ofFloat(img, "rotationY", 0.0f, 70.0f).setDuration(1000).start();
 
         //测试属性动画
         PropertyValuesHolder a1 = PropertyValuesHolder.ofFloat("alpha", 0f, 1f);
