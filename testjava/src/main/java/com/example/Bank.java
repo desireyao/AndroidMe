@@ -21,7 +21,7 @@ public class Bank {
 
     public void getMoney() {
         rwlock.readLock().lock();
-        System.out.println("start_getMoney,total: " + totalMoney);
+        System.out.println  ("start_getMoney,total: " + totalMoney);
         try {
             Thread.sleep(5000);
             System.out.println("end_getMoney,total: " + totalMoney);
