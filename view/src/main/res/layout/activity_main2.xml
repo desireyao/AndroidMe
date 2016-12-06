@@ -21,10 +21,9 @@
     <!--android:src="@mipmap/ic_launcher" />-->
 
     <com.yaoh.view.xfermode.RoundImageViewByXfermode
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="500px"
+        android:layout_height="500px"
         android:layout_centerInParent="true"
-        android:layout_margin="10dp"
         android:src="@drawable/dog" />
 
     <Button

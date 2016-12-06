@@ -28,4 +28,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         centerTitle.setText("BEACOOL");
     }
+
+    private void init(){
+
+
+    }
 }

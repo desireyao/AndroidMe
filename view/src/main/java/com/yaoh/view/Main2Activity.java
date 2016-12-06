@@ -1,31 +1,23 @@
 package com.yaoh.view;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 
-import com.yaoh.view.view.CustomViewOne;
+import com.yaoh.view.view.PoterDuffLoadingView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
-public class MainActivity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity {
 
 //    @BindView(R.id.btn) Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main2);
+        setContentView(new PoterDuffLoadingView(getApplicationContext()));
 
 //        ButterKnife.bind(this);
 //        btn.setOnClickListener(new View.OnClickListener() {
