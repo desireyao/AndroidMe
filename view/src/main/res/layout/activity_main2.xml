@@ -5,40 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--<com.yaoh.view.RoundDotProgressBar.RoundDotProgressBar-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
+    <!--<com.yaoh.view.xfermode.RoundImageViewByXfermode-->
+    <!--android:layout_width="500px"-->
+    <!--android:layout_height="500px"-->
     <!--android:layout_centerInParent="true"-->
-    <!--app:CycleDefaultColor="@color/colorAccent"-->
-    <!--app:CycleFinishColor="@color/colorPrimary"-->
-    <!--android:background="#FAFAFA"-->
-    <!--/>-->
+    <!--android:src="@drawable/dog" />-->
 
-    <!--<com.yaoh.view.view.MultiTouchView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_centerInParent="true"-->
-    <!--android:src="@mipmap/ic_launcher" />-->
-
-    <com.yaoh.view.xfermode.RoundImageViewByXfermode
-        android:layout_width="500px"
-        android:layout_height="500px"
+    <com.yaoh.view.xfermode.XfermodeViewTwo
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:src="@drawable/dog" />
-
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BUTTON1"
-        />
-
-    <Button
-        android:id="@+id/btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BUTTON2"
-        android:layout_toRightOf="@id/btn1"
-        />
+        android:background="@drawable/ninjafrog" />
 
 </RelativeLayout>

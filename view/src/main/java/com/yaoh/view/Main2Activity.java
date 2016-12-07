@@ -7,7 +7,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.yaoh.view.view.PoterDuffLoadingView;
+import com.yaoh.view.xfermode.XfermodeViewOne;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -16,8 +16,8 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main2);
-        setContentView(new PoterDuffLoadingView(getApplicationContext()));
+        setContentView(R.layout.activity_main2);
+//        setContentView(new XfermodeViewOne(this));
 
 //        ButterKnife.bind(this);
 //        btn.setOnClickListener(new View.OnClickListener() {
