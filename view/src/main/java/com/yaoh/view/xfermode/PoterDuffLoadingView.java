@@ -1,4 +1,4 @@
-package com.yaoh.view.xfermode;
+package com.yaoh.view.view;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -37,6 +37,7 @@ public class PoterDuffLoadingView extends View {
     public PoterDuffLoadingView(Context context) {
         super(context);
         mResources = getResources();
+
         initBitmap();
         initPaint();
         initXfermode();
@@ -44,7 +45,7 @@ public class PoterDuffLoadingView extends View {
 
     private void initXfermode() {
         // 叠加处绘制源图
-        mXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT);
+        mXfermode = new PorterDuffXfermode(PorterDuff.Mode.XOR);
     }
 
     private void initPaint() {
@@ -57,8 +58,7 @@ public class PoterDuffLoadingView extends View {
 
     private void initBitmap() {
         // 初始化bitmap
-        mBitmap = ((BitmapDrawable) mResources.getDrawable(R.drawable.src))
-                .getBitmap();
+        mBitmap = ((BitmapDrawable) mResources.getDrawable(R.drawable.ga_studio)).getBitmap();
         mBitWidth = mBitmap.getWidth();
         mBitHeight = mBitmap.getHeight();
     }
@@ -86,8 +86,9 @@ public class PoterDuffLoadingView extends View {
         canvas.restoreToCount(saveLayerCount);
 
         // 改变Rect区域，真实情况下时提供接口传入进度，计算高度
-        mCurrentTop -= mEnd;
-//        if (mCurrentTop- <= mEnd) {
+//        mCurrentTop -= 8;
+          mCurrentTop = mEnd;
+//        if (mCurrentTop<= mEnd) {
 //            mCurrentTop = mStart;
 //        }
         mDynamicRect.top = mCurrentTop;
@@ -113,6 +114,7 @@ public class PoterDuffLoadingView extends View {
         mStart = left + mBitHeight;
         mCurrentTop = mStart;
         mEnd = left;
+
         mDynamicRect = new Rect(left, mStart, left + mBitWidth, left + mBitHeight);
     }
 }

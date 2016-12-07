@@ -2,6 +2,7 @@ package com.yaoh.view.xfermode;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -17,6 +18,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.yaoh.view.R;
 
@@ -38,7 +41,8 @@ public class XfermodeViewTwo extends View {
     private int mScreenWidth;   // 屏幕的宽
     private int mScreenHeight;  // 屏幕的高
 
-    private int mPiercedLeft, mPiercedRight, mPiercedTop, mPiercedBottom;
+    private int mPiercedX, mPiercedY;
+    private int mPiercedRadius;
 
     public XfermodeViewTwo(Context context) {
         super(context);
@@ -46,13 +50,17 @@ public class XfermodeViewTwo extends View {
 
     public XfermodeViewTwo(Context context, AttributeSet attrs) {
         super(context, attrs);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        setLayoutParams(layoutParams);
     }
 
-    public void setPiercedPosition(int piercedLeft, int piercedTop, int piercedRight, int piercedBottom) {
-        mPiercedLeft = piercedLeft;
-        mPiercedRight = piercedTop;
-        mPiercedTop = piercedRight;
-        mPiercedBottom = piercedBottom;
+    public void setPiercedPosition(int mPiercedX, int mPiercedY, int mPiercedRadius) {
+        this.mPiercedX = mPiercedX;
+        this.mPiercedY = mPiercedY;
+        this.mPiercedRadius = mPiercedRadius;
+
     }
 
     @Override
@@ -94,15 +102,17 @@ public class XfermodeViewTwo extends View {
                         Canvas.FULL_COLOR_LAYER_SAVE_FLAG |
                         Canvas.CLIP_TO_LAYER_SAVE_FLAG);
         paint.setAlpha(255);
-        canvas.drawBitmap(getBitmap4Img(), mPiercedRight, mPiercedBottom, paint);
+
+        canvas.drawBitmap(getBitmap4Img(), mPiercedX + mPiercedRadius, mPiercedY + mPiercedRadius, paint);
     }
 
     private Bitmap makeDst() {
         Bitmap bm = Bitmap.createBitmap(mScreenWidth, mScreenHeight, Bitmap.Config.ARGB_8888);
         Canvas canvcs = new Canvas(bm);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(Color.YELLOW);
-        canvcs.drawOval(new RectF(W, H, W * 2, H * 2), paint);
+        paint.setColor(Color.WHITE);
+
+        canvcs.drawCircle(mPiercedX,mPiercedY, mPiercedRadius,paint);
         return bm;
     }
 
@@ -116,22 +126,44 @@ public class XfermodeViewTwo extends View {
     }
 
     private Bitmap getBitmap4Img() {
-        BitmapDrawable bmpDraw = (BitmapDrawable) getResources().getDrawable(R.drawable.ga_studio);
-        Bitmap bmp = bmpDraw.getBitmap();
+//        BitmapDrawable bmpDraw = (BitmapDrawable) getResources().getDrawable(R.drawable.timg);
+//        Bitmap bmp = bmpDraw.getBitmap();
+        Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.timg);
 
         int width = bmp.getWidth();
         int height = bmp.getHeight();
+        Log.e("TAG","width: " + width + " height: " + height);
 
-        // 计算缩放比例
-        float scaleWidth = 0.3f;
-        float scaleHeight = 0.3f;
+        float bmpScale = width * 1.0f / height;
+
+
+//        // 计算缩放比例
+        float scaleWidth = 1f;
+        float scaleHeight = 1f;
+//
+        if(width > mScreenWidth){
+            scaleWidth = mScreenWidth * 1.0f / width;
+
+            if(scaleWidth * height > mScreenHeight){
+                scaleWidth = mScreenHeight * 1.0f /height;
+            }
+        }else if(height > mScreenHeight){
+            scaleWidth = mScreenHeight * 1.0f / height;
+            if(scaleWidth * height > mScreenWidth){
+                scaleWidth = mScreenWidth * 1.0f /height;
+            }
+        }
 
         // 取得想要缩放的matrix参数
         Matrix matrix = new Matrix();
-        matrix.postScale(scaleWidth, scaleHeight);
-
-        // 得到新的图片
+        matrix.postScale(scaleWidth/2f, scaleWidth/2f);
+//
+//        // 得到新的图片
         Bitmap newbm = Bitmap.createBitmap(bmp, 0, 0, width, height, matrix, true);
+         width = newbm.getWidth();
+         height = newbm.getHeight();
+         Log.e("TAG","new width: " + width + " new height: " + height);
+
         return newbm;
     }
 }

@@ -6,17 +6,36 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.FrameLayout;
 
-import com.yaoh.view.xfermode.XfermodeViewOne;
+import com.yaoh.view.xfermode.XfermodeViewTwo;
 
 public class Main2Activity extends AppCompatActivity {
 
 //    @BindView(R.id.btn) Button btn;
 
+    private XfermodeViewTwo xfermodeViewTwo;
+    private FrameLayout masklayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        masklayout = (FrameLayout) findViewById(R.id.masklayout);
+
+        xfermodeViewTwo = new XfermodeViewTwo(this);
+        xfermodeViewTwo.setPiercedPosition(100,200,80);
+
+        masklayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                masklayout.setVisibility(View.GONE);
+            }
+        });
+
+        masklayout.addView(xfermodeViewTwo);
+
+
 //        setContentView(new XfermodeViewOne(this));
 
 //        ButterKnife.bind(this);
