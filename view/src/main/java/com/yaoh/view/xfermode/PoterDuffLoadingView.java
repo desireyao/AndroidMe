@@ -1,4 +1,4 @@
-package com.yaoh.view.view;
+package com.yaoh.view.xfermode;
 
 import android.content.Context;
 import android.content.res.Resources;
