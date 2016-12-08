@@ -132,7 +132,7 @@ public class MaskView extends View {
      * @return
      */
     private Bitmap createPromptBitmap() {
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ga_studio);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.prompt);
 
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
@@ -154,6 +154,8 @@ public class MaskView extends View {
 
 //      得到新的图片
         Bitmap newBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+        Log.e("TAG", "newBitmap.getWidth(): " + newBitmap.getWidth() + " newBitmap.getHeight(): " + newBitmap.getHeight());
+
         return newBitmap;
     }
 }
