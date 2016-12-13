@@ -4,6 +4,9 @@ import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDialog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -22,7 +26,25 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        addGuideImage(); // 添加引导页图片
+        EditText editText = (EditText) findViewById(R.id.edittext);
+        editText.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Log.e("TAG","beforeTextChanged");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.e("TAG","onTextChanged");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.e("TAG","afterTextChanged: " + s.toString());
+            }
+        });
+//        addGuideImage(); // 添加引导页图片
 //        showMyDialog();
 
     }
@@ -51,37 +73,37 @@ public class Main2Activity extends AppCompatActivity {
     /**
      * 添加引导图片
      */
-    public void addGuideImage() {
-        View view = findViewById(R.id.framlayout);//查找通过setContentView上的根布局
-        ViewParent viewParent = view.getParent();
-
-        if(viewParent instanceof RelativeLayout){
-            final RelativeLayout frameLayout = (RelativeLayout)viewParent;
-
-            final ImageView guideImage = new ImageView(this);
-            View topView = LayoutInflater.from(this).inflate(R.layout.my_dialog,null);
-
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
-                                ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.MATCH_PARENT);
-
-             topView.setLayoutParams(params);
-//                guideImage.setScaleType(ImageView.ScaleType.FIT_XY);
-//                guideImage.setImageResource(R.drawable.framlayout);
-//                guideImage.setBackgroundColor(getResources().getColor(R.color.gray));
-            topView.setAlpha(0.8f);
-            topView.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        frameLayout.removeView(guideImage);
-                    }
-                });
-
-
-
-                // 添加引导图片
-                frameLayout.addView(topView);
-            }
-        }
+//    public void addGuideImage() {
+//        View view = findViewById(R.id.framlayout);//查找通过setContentView上的根布局
+//        ViewParent viewParent = view.getParent();
+//
+//        if(viewParent instanceof RelativeLayout){
+//            final RelativeLayout frameLayout = (RelativeLayout)viewParent;
+//
+//            final ImageView guideImage = new ImageView(this);
+//            View topView = LayoutInflater.from(this).inflate(R.layout.my_dialog,null);
+//
+//            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+//                                ViewGroup.LayoutParams.MATCH_PARENT,
+//                                ViewGroup.LayoutParams.MATCH_PARENT);
+//
+//             topView.setLayoutParams(params);
+////                guideImage.setScaleType(ImageView.ScaleType.FIT_XY);
+////                guideImage.setImageResource(R.drawable.framlayout);
+////                guideImage.setBackgroundColor(getResources().getColor(R.color.gray));
+//            topView.setAlpha(0.8f);
+//            topView.setOnClickListener(new View.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(View v) {
+//                        frameLayout.removeView(guideImage);
+//                    }
+//                });
+//
+//
+//
+//                // 添加引导图片
+//                frameLayout.addView(topView);
+//            }
+//        }
 }

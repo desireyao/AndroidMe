@@ -1,2 +1,1 @@
-include ':toolbar', ':horizontalprogressbarwithnumber', ':animation', ':percentLayout', ':view', ':testjava', ':serviceTEST', ':code', ':baiduMapTest'
-include ':chapter_7'
+include ':toolbar', ':horizontalprogressbarwithnumber', ':animationTEST', ':percentLayout', ':view', ':testjava', ':serviceTEST', ':code', ':wxpaydemo'

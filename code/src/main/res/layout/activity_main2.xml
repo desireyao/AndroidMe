@@ -6,33 +6,24 @@
     android:layout_height="match_parent"
     tools:context="com.yaoh.code.Main2Activity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="public class MainActivity extends BasicActivity {
-               @Override
-               public void onCreate(Bundle savedInstanceState) {
-               super.onCreate(savedInstanceState);
-               setContentView(R.layout.main);
-
-               Button btn = (Button)findViewById(R.id.btn);
-               btn.setOnClickListener(new View.OnClickListener(){
-               @Override
-               public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SubActivity.class));
-               }
-        });" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/camera" />
-
-    <FrameLayout
-        android:id="@+id/framlayout"
+    <EditText
+        android:id="@+id/edittext"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/gray" />
+        android:layout_height="wrap_content"
+        android:hint="请输入"
+        android:textColorHint="@color/gray"
+        />
+
+
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@drawable/camera" />-->
+
+    <!--<FrameLayout-->
+        <!--android:id="@+id/framlayout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/gray" />-->
 
 </RelativeLayout>

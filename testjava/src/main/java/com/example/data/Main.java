@@ -10,6 +10,17 @@ package com.example.data;
 public class Main {
 
     public static void main(String[] args){
+        test1();
+    }
+
+    private static void test1(){
+         int a = 0xee | 0xff;
+         int b = 0xee & 0xff;
+
+         System.out.println(" a: " + Integer.toHexString(a) + "\n b: " + Integer.toHexString(b));
+    }
+
+    private static void test2(){
         System.out.println("Byte.MAX_VALUE: " + Byte.MAX_VALUE + " Byte.MIN_VALUE: " + Byte.MIN_VALUE);
         System.out.println("Character.MAX_VALUE: " + Character.MAX_VALUE + " Character.MIN_VALUE: " + Character.MIN_VALUE);
         System.out.println("Integer.MAX_VALUE: " + Integer.MAX_VALUE + " Integer.MIN_VALUE: " + Integer.MIN_VALUE);
