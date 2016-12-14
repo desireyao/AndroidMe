@@ -1,1 +1,1 @@
-include ':toolbar', ':horizontalprogressbarwithnumber', ':animationTEST', ':percentLayout', ':view', ':testjava', ':serviceTEST', ':code', ':wxpaydemo'
+include ':toolbar', ':animationTEST', ':percentLayout', ':view', ':testjava', ':serviceTEST', ':code', ':wxpaydemo', ':app'

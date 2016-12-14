@@ -1,4 +1,4 @@
-package com.desireyao.horizontalprogressbarwithnumber.view;
+package com.yaoh.view.progressbar;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -6,10 +6,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
-
-import com.desireyao.horizontalprogressbarwithnumber.commons.SizeUtils;
-import com.orhanobut.logger.Logger;
-
 /**
  * Package com.desireyao.horizontalprogressbarwithnumber.view.
  * Created by yaoh on 2016/09/23.
@@ -72,8 +68,8 @@ public class HProgressBar extends ProgressBar{
         super.onDraw(canvas);
 
         canvas.save();
-//        //画笔平移到指定paddingLeft， getHeight() / 2位置，注意以后坐标都为以此为0，0
-//        canvas.translate(getPaddingLeft(), getHeight() / 2);
+//      // 画笔平移到指定paddingLeft， getHeight() / 2位置，注意以后坐标都为以此为0，0
+//      // canvas.translate(getPaddingLeft(), getHeight() / 2);
 
         boolean noNeedBg = false;
         //当前进度和总值的比例
@@ -90,16 +86,14 @@ public class HProgressBar extends ProgressBar{
         float textHeight = (mPaint.descent() + mPaint.ascent()) / 2;
 
         //如果到达最后，则未到达的进度条不需要绘制
-        if (progressPosX + textWidth > mRealWidth)
-        {
+        if (progressPosX + textWidth > mRealWidth) {
             progressPosX = mRealWidth - textWidth;
             noNeedBg = true;
         }
 
         // 绘制已到达的进度
         float endX = progressPosX - mTextOffset / 2;
-        if (endX > 0)
-        {
+        if (endX > 0) {
             mPaint.setColor(Color.parseColor("#00F5FF"));
             mPaint.setStrokeWidth(10);
             canvas.drawLine(0, 0, endX, 0, mPaint);
@@ -111,8 +105,7 @@ public class HProgressBar extends ProgressBar{
 
 
         // 绘制未到达的进度条
-        if (!noNeedBg)
-        {
+        if (!noNeedBg) {
             float start = progressPosX + mTextOffset / 2 + textWidth;
             mPaint.setColor(Color.parseColor("#eeeeee"));
             mPaint.setStrokeWidth(5);
@@ -126,7 +119,5 @@ public class HProgressBar extends ProgressBar{
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         mRealWidth = w - getPaddingRight() - getPaddingLeft();
-
-        Logger.e("mRealWidth: " + mRealWidth);
     }
 }
