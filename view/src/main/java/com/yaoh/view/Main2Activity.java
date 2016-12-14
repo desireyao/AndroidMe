@@ -8,14 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.yaoh.view.xfermode.MaskView;
-import com.yaoh.view.xfermode.XfermodeViewTwo;
+import com.yaoh.view.xfermode.MaskPierceView;
 
 public class Main2Activity extends AppCompatActivity {
 
 //    @BindView(R.id.btn) Button btn;
 
-    private MaskView maskView;
+    private MaskPierceView maskView;
     private FrameLayout masklayout;
 
     @Override
@@ -24,8 +23,8 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         masklayout = (FrameLayout) findViewById(R.id.masklayout);
 
-        maskView = new MaskView(this);
-        maskView.setPiercePosition(100,200,60);
+        maskView = new MaskPierceView(this);
+        maskView.setPiercePosition(500,900,80);
 
         masklayout.setOnClickListener(new View.OnClickListener() {
             @Override

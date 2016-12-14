@@ -12,7 +12,6 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -25,8 +24,8 @@ import com.yaoh.view.R;
  * <p/>
  * Description: 遥控拍照的遮罩页
  */
-public class MaskView extends View {
-    private static final String TAG = "MaskView";
+public class MaskPierceView extends View {
+    private static final String TAG = "MaskPierceView";
 
     private Bitmap mSrcRect;
     private Bitmap mDstCircle;
@@ -37,11 +36,11 @@ public class MaskView extends View {
     private int mPiercedX, mPiercedY;
     private int mPiercedRadius;
 
-    public MaskView(Context context) {
+    public MaskPierceView(Context context) {
         this(context, null);
     }
 
-    public MaskView(Context context, AttributeSet attrs) {
+    public MaskPierceView(Context context, AttributeSet attrs) {
         super(context, attrs);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -53,7 +52,6 @@ public class MaskView extends View {
             mScreenWidth = dm.widthPixels;
             mScreenHeight = dm.heightPixels;
         }
-        Log.e(TAG, "mScreenWidth: " + mScreenWidth + " mScreenHeight: " + mScreenHeight);
     }
 
     /**
@@ -95,7 +93,7 @@ public class MaskView extends View {
                         Canvas.CLIP_TO_LAYER_SAVE_FLAG);
         paint.setAlpha(255);
 
-        canvas.drawBitmap(createPromptBitmap(), mPiercedX + mPiercedRadius / 2, mPiercedY + mPiercedRadius / 2, paint);
+        canvas.drawBitmap(createPromptBitmap(), mPiercedX + mPiercedRadius, mPiercedY + mPiercedRadius, paint);
     }
 
     /**
@@ -136,7 +134,6 @@ public class MaskView extends View {
 
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
-        Log.e("TAG", "width: " + width + " height: " + height);
 
         DisplayMetrics dm = getResources().getDisplayMetrics();  //获取屏幕密度
         float realScale = 1.0f / dm.density;  //恢复到实际像素的缩放
@@ -154,8 +151,6 @@ public class MaskView extends View {
 
 //      得到新的图片
         Bitmap newBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
-        Log.e("TAG", "newBitmap.getWidth(): " + newBitmap.getWidth() + " newBitmap.getHeight(): " + newBitmap.getHeight());
-
         return newBitmap;
     }
 }
