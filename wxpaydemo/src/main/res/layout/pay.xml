@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    style="@style/NavPage">
-    
+    android:padding="10dp">
+
+    <Button
+        android:id="@+id/btn_order"
+        style="@style/MMLineActionButton"
+        android:layout_margin="10dp"
+        android:text="@string/pay_by_wxap" />
+
+    <Button
+        android:id="@+id/btn_pay"
+        style="@style/MMLineActionButton"
+        android:layout_margin="10dp"
+        android:text="@string/check_pay" />
+
     <TextView
-        style="@style/TitleText"
-        android:text="@string/pay_by_wx_title"/>
-    
-    <Button
-        android:id="@+id/appay_btn"
-        style="@style/MMLineActionButton"
-	    android:layout_margin="10dp"
-        android:text="@string/pay_by_wxap"/>
-    <Button
-        android:id="@+id/check_pay_btn"
-        style="@style/MMLineActionButton"
-	    android:layout_margin="10dp"
-        android:text="@string/check_pay"/>
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="暂无结果显示"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="20dp"
+        />
 
 </LinearLayout>

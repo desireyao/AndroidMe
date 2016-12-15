@@ -1,62 +1,73 @@
 package com.wxpaydemo;
 
-import com.tencent.mm.sdk.constants.Build;
-import com.tencent.mm.sdk.modelpay.PayReq;
-import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.thoughtworks.xstream.XStream;
+import com.wxpaydemo.managers.NetworkManager;
+import com.wxpaydemo.model.Order;
+import com.wxpaydemo.model.PrepayInfo;
+import com.wxpaydemo.utils.WXUtil;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class PayActivity extends Activity {
+    private static final String TAG = "PayActivity";
 
-    private IWXAPI api;
+    WXUtil wxUtils;
+    TextView tv_result;
+    PrepayInfo prepayInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay);
+        wxUtils = new WXUtil(this);
 
-        api = WXAPIFactory.createWXAPI(this,Constants.APP_ID);
+        tv_result = (TextView) findViewById(R.id.tv_result);
 
-        Button appayBtn = (Button) findViewById(R.id.appay_btn);
-        appayBtn.setOnClickListener(new View.OnClickListener() {
+        Button btn_order = (Button) findViewById(R.id.btn_order);
+        btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Button payBtn = (Button) findViewById(R.id.appay_btn);
-                payBtn.setEnabled(false);
-                Toast.makeText(PayActivity.this, "请求支付中...", Toast.LENGTH_SHORT).show();
-                try {
-                    PayReq request = new PayReq();
-                    request.appId = "wxd930ea5d5a258f4f";
-                    request.partnerId = "1900000109";
-                    request.prepayId = "1101000000140415649af9fc314aa427";
-                    request.packageValue = "Sign=WXPay";
-                    request.nonceStr = "1101000000140429eb40476f8896f4c9";
-                    request.timeStamp = "1398746574";
-                    request.sign = "7FFECB600D7157C5AA49810D2D8F28BC2811827B";
-                    api.sendReq(request);
+                NetworkManager.UnfiedOrder(getOrder(), new NetworkManager.ResultListerner() {
+                    @Override
+                    public void Success(String data) {
+                        tv_result.setText("请求预付单的结果：\n \n" + data);
+                        XStream stream = new XStream();
+                        stream.processAnnotations(PrepayInfo.class);
+                        prepayInfo = (PrepayInfo) stream.fromXML(data);
+                    }
 
-                } catch (Exception e) {
-                    Log.e("PAY_GET", "异常：" + e.getMessage());
-                    Toast.makeText(PayActivity.this, "异常：" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-                payBtn.setEnabled(true);
+                    @Override
+                    public void Faiulre(String data) {
+                    }
+                });
             }
         });
 
-        Button checkPayBtn = (Button) findViewById(R.id.check_pay_btn);
-        checkPayBtn.setOnClickListener(new View.OnClickListener() {
+        Button btn_pay = (Button) findViewById(R.id.btn_pay);
+        btn_pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isPaySupported = api.getWXAppSupportAPI() >= Build.PAY_SUPPORTED_SDK_INT;
-                Toast.makeText(PayActivity.this, String.valueOf(isPaySupported), Toast.LENGTH_SHORT).show();
+//                boolean isPaySupported = api.getWXAppSupportAPI() >= Build.PAY_SUPPORTED_SDK_INT;
+//                Toast.makeText(PayActivity.this, String.valueOf(isPaySupported), Toast.LENGTH_SHORT).show();
+                  wxUtils.pay(prepayInfo);
             }
         });
     }
 
+    private Order getOrder(){
+        Order order = new Order(Constants.APP_ID,
+                Constants.PARTNER_ID,
+                WXUtil.getNonceStr(),
+                "腾讯充值中心-QQ会员充值",
+                WXUtil.getOutTradeNo(),
+                "1",
+                "127.0.0.1",
+                "http://www.weixin.qq.com/wxpay/pay.php",
+                "APP");
+        return order;
+    }
 }

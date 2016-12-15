@@ -90,7 +90,7 @@ public class PayDemoActivity extends FragmentActivity {
 					// 获取alipay_open_id，调支付时作为参数extern_token 的value
 					// 传入，则支付账户为该授权账户
 					Toast.makeText(PayDemoActivity.this,
-				             "授权成功\n" + String.format("authCode:%s", authResult.getAuthCode()), Toast.LENGTH_SHORT).show();
+							"授权成功 \n" + String.format("authCode:%s", authResult.getAuthCode()), Toast.LENGTH_SHORT).show();
 				} else {
 					// 其他状态值则为授权失败
 					Toast.makeText(PayDemoActivity.this,
@@ -121,8 +121,7 @@ public class PayDemoActivity extends FragmentActivity {
 			new AlertDialog.Builder(this)
 			               .setTitle("警告")
 			               .setMessage("需要配置APPID | RSA_PRIVATE")
-					       .setPositiveButton("确定", 
-					    		   new DialogInterface.OnClickListener() {
+					       .setPositiveButton("确定", new DialogInterface.OnClickListener() {
 						                 public void onClick(DialogInterface dialoginterface, int i) {
 							                finish();
 						                 }
@@ -142,12 +141,10 @@ public class PayDemoActivity extends FragmentActivity {
 		String sign = OrderInfoUtil2_0.getSign(params, RSA_PRIVATE);
 //		final String orderInfo = orderParam + "&" + sign;
 		final String orderInfo = "app_id=2015052600090779&biz_content=%7B%22timeout_express%22%3A%2230m%22%2C%22seller_id%22%3A%22%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22total_amount%22%3A%220.02%22%2C%22subject%22%3A%221%22%2C%22body%22%3A%22%E6%88%91%E6%98%AF%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%22%2C%22out_trade_no%22%3A%22314VYGIAGG7ZOYY%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA&timestamp=2016-08-15%2012%3A12%3A15&version=1.0&sign=MsbylYkCzlfYLy9PeRwUUIg9nZPeN9SfXPNavUCroGKR5Kqvx0nEnd3eRmKxJuthNUx4ERCXe552EV9PfwexqW%2B1wbKOdYtDIb4%2B7PL3Pc94RZL0zKaWcaY3tSL89%2FuAVUsQuFqEJdhIukuKygrXucvejOUgTCfoUdwTi7z%2BZzQ%3D";
-				  ;
 //		final String orderInfo = "partner=\"2088712821697234\"&seller_id=\"kairu_tech@163.com\"&out_trade_no=\"zxb16121413263085971917\"&total_fee=\"0.1\"&notify_url=\"http://apit.ifoodsoso.cn/api/MobilePay/PayNotify\"&service=\"mobile.securitypay.pay\"&payment_type=\"1\"&_input_charset=\"utf-8\"&it_b_pay=\"30m\"&sign=\"kzdO7nE7BphaWbd7RvmtkwV%2FCFrafxd5Q4DHgDQ2AcQVdnLkt6dyHnWm5Anemp0sFxEq8ploMEss82CgkLYC5ubTo2EDtyj2ReiXze335HiCyNkIdG%2Fg0pvJbid630w8ERWsBelp6PE7eyqhHC9z3QDTT%2Biy60Dzj3OmzjscshE%3D\"&sign_type=\"RSA\"";
 		Log.e("TAG", "orderInfo: " + orderInfo);
 		
 		Runnable payRunnable = new Runnable() {
-
 			@Override
 			public void run() {
 				PayTask alipay = new PayTask(PayDemoActivity.this);

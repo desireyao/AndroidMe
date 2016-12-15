@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">WxPayDemo</string>
     <string name="pay_by_wx_title">通过微信支付</string>
-    <string name="pay_by_wxap">服务器端签名微信支付</string>
-    <string name="check_pay">检查微信版本是否支持支付</string>
-    <string name="pay_result_tip">这个界面用于显示第三方app通过微信支付的结果</string>
+    <string name="pay_by_wxap">生成预支付订单</string>
+    <string name="check_pay">支付</string>
+    <string name="pay_result_tip">这个界面用于显示第三方app通过微信支付的结果:</string>
 </resources>
