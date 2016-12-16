@@ -2,9 +2,12 @@ package com.wxpaydemo.utils;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.$Gson$Types;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
@@ -64,6 +67,12 @@ public class OKHttpUtil {
         deliveryResult(callback, request);
     }
 
+    private void postRequest(String url,final ResultCallback callback,JSONObject json){
+        Request request = buildPostRequest(url,json);
+        deliveryResult(callback,request);
+    }
+
+
     /**
      * 处理结果
      *
@@ -76,7 +85,7 @@ public class OKHttpUtil {
 
             @Override
             public void onFailure(Call call, IOException e) {
-                sendFailCallback(callback, e);
+                  sendFailCallback(callback, e);
             }
 
             @Override
@@ -138,31 +147,32 @@ public class OKHttpUtil {
         return new Request.Builder().url(url).post(requestBody).build();
     }
 
+    private Request buildPostRequest(String url,JSONObject json){
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        RequestBody body = RequestBody.create(JSON,json.toString());
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        return request;
+    }
 
     /**********************对外接口************************/
-    /**
-     * get请求
-     *
-     * @param url      请求url
-     * @param callback 请求回调
-     */
     public static void get(String url, ResultCallback callback) {
         get().getRequest(url, callback);
     }
 
-    /**
-     * post请求
-     *
-     * @param url      请求url
-     * @param callback 请求回调
-     * @param params   请求参数
-     */
+
     public static void post(String url, final ResultCallback callback, List<Param> params) {
         get().postRequest(url, callback, params);
     }
 
     public static void post(String url, final ResultCallback callback, String xml) {
         get().postRequest(url, callback, xml);
+    }
+
+    public static void post(String url, final ResultCallback callback, JSONObject json) {
+        get().postRequest(url, callback, json);
     }
 
     /**
@@ -203,5 +213,4 @@ public class OKHttpUtil {
             this.value = value;
         }
     }
-
 }

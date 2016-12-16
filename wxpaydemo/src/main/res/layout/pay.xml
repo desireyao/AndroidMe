@@ -21,11 +21,10 @@
         android:id="@+id/tv_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="暂无结果显示"
-        android:textSize="18sp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="20dp"
-        />
+        android:textSize="18sp" />
 
 </LinearLayout>

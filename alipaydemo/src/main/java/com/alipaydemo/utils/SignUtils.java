@@ -1,4 +1,6 @@
-package com.alipaydemo;
+package com.alipaydemo.utils;
+
+import com.alipaydemo.utils.Base64;
 
 import java.security.KeyFactory;
 import java.security.PrivateKey;

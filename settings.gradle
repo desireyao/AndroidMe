@@ -1,1 +1,1 @@
-include ':toolbar', ':animationTEST', ':percentLayout', ':view', ':testjava', ':serviceTEST', ':code', ':wxpaydemo',':alipaydemo'
+include ':toolbar', ':animationTEST', ':percentLayout', ':view', ':testjava', ':serviceTEST', ':code', ':wxpaydemo', ':alipaydemo', ':pay'

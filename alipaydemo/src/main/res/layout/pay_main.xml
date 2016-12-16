@@ -2,20 +2,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
-    <ImageView
+    <Button
+        android:id="@+id/payV2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/msp_demo_title_bg"
-        android:scaleType="center"
-        android:src="@drawable/msp_demo_title"
-        tools:ignore="ContentDescription" />
+        android:layout_margin="10dp"
+        android:onClick="payV2"
+        android:text="支付宝支付"
+        tools:ignore="HardcodedText" />
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.alipaydemo.ExternalFragment"
+    <Button
+        android:id="@+id/authV2"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="authV2"
+        android:text="支付宝授权" />
+
+    <Button
+        android:id="@+id/h5pay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="h5Pay"
+        android:text="网页支付转native" />
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="结果如下:"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
 
 </LinearLayout>

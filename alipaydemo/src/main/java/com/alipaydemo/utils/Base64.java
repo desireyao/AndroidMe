@@ -1,4 +1,4 @@
-package com.alipaydemo;
+package com.alipaydemo.utils;
 
 public final class Base64 {
 
