@@ -45,8 +45,10 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler{
 
 	@Override
 	public void onResp(BaseResp resp) {
-		tv_result.setText("errCode: " + resp.errCode + "\n errStr: " + resp.errStr
-				+ "\n openId: " + resp.openId + "\n transaction:" + resp.transaction);
+		tv_result.setText("errCode: " + resp.errCode
+				+ "\n errStr: " + resp.errStr
+				+ "\n openId: " + resp.openId
+				+ "\n transaction:" + resp.transaction);
 
 		if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
 //			AlertDialog.Builder builder = new AlertDialog.Builder(this);

@@ -5,8 +5,8 @@ import android.util.Log;
 import com.thoughtworks.xstream.XStream;
 import com.wxpaydemo.Constants;
 import com.wxpaydemo.model.Order;
+import com.wxpaydemo.model.PrepayInfo;
 import com.wxpaydemo.utils.OKHttpUtil;
-import com.wxpaydemo.utils.WXUtil;
 
 /**
  * Package com.wxpaydemo.managers.
@@ -16,20 +16,6 @@ import com.wxpaydemo.utils.WXUtil;
  * Description:
  */
 public class NetworkManager {
-    public static NetworkManager manager;
-
-    private NetworkManager(){}
-
-    public static NetworkManager get(){
-        if(manager == null){
-            synchronized (NetworkManager.class){
-                if(manager == null){
-                    manager = new NetworkManager();
-                }
-            }
-        }
-        return manager;
-    }
 
     /**
      * 本地模拟 统一下单 生成微信预支付prepareId 这一步放在服务器端生成
@@ -37,7 +23,7 @@ public class NetworkManager {
      */
     public static void UnfiedOrder(Order order, final ResultListerner listerner) {
         //生成sign签名
-        String sign = WXUtil.getSign(order);
+        String sign = WxPayManager.getSign(order);
 
         //生成所需参数，为xml格式
         order.setSign(sign.toUpperCase());
@@ -45,7 +31,7 @@ public class NetworkManager {
         xstream.alias("xml", Order.class);
         final String xml = xstream.toXML(order).replaceAll("__", "_");
 
-        //调起接口，获取预支付ID
+        //获取预支付id sign...
         OKHttpUtil.post(Constants.UNIFIED_ORDER, new OKHttpUtil.ResultCallback<String>() {
             @Override
             public void onSuccess(String response) {
@@ -53,20 +39,24 @@ public class NetworkManager {
 
                 String data = response;
                 data = data.replaceAll("<!\\[CDATA\\[", "").replaceAll("]]>", "");
-                listerner.Success(data);
+
+                XStream stream = new XStream();
+                stream.processAnnotations(PrepayInfo.class);
+                PrepayInfo prepayInfo = (PrepayInfo) stream.fromXML(data);
+                listerner.Success(prepayInfo);
             }
 
             @Override
             public void onFailure(Exception e) {
-                listerner.Faiulre(e.toString());
+                 listerner.Faiulre(e.toString());
             }
         }, xml);
     }
 
 
 
-    public interface ResultListerner {
-        void Success(String data);
+    public interface ResultListerner<T> {
+        void Success(T data);
         void Faiulre(String data);
     }
 }

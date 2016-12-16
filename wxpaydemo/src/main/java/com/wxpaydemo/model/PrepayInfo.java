@@ -11,7 +11,6 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  */
 @XStreamAlias("xml")
 public class PrepayInfo {
-
     private String return_code;
     private String return_msg;
     private String appid;

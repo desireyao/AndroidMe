@@ -1,4 +1,4 @@
-package com.wxpaydemo.utils;
+package com.wxpaydemo.managers;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,6 +10,7 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.wxpaydemo.Constants;
 import com.wxpaydemo.model.Order;
 import com.wxpaydemo.model.PrepayInfo;
+import com.wxpaydemo.utils.MD5;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,15 +26,39 @@ import java.util.Random;
  * <p/>
  * Description:
  */
-public class WXUtil {
-    private static final String TAG = "WXUtils";
+public class WxPayManager {
+    private static final String TAG = "WxPayManager";
 
     private Context mContext;
     private IWXAPI iwxapi;
 
-    public WXUtil(Context context){
+    public WxPayCallback wxPayCallback;
+
+    public  interface WxPayCallback{
+        void getOrderInfoSuccess(PrepayInfo data);
+        void onFailure(String message);
+    }
+
+    public WxPayManager(Context context,WxPayCallback wxPayCallback){
         mContext = context;
+        this.wxPayCallback = wxPayCallback;
         getWXAPI();
+    }
+
+    public void unifiedOrder(){
+        NetworkManager.UnfiedOrder(getOrder(), new NetworkManager.ResultListerner<PrepayInfo>() {
+
+            @Override
+            public void Success(PrepayInfo data) {
+                wxPayCallback.getOrderInfoSuccess(data);
+            }
+
+            @Override
+            public void Faiulre(String data) {
+                wxPayCallback.onFailure(data);
+            }
+        });
+
     }
 
     public void pay(PrepayInfo prepayInfo) {
@@ -91,6 +116,10 @@ public class WXUtil {
         return true;
     }
 
+    /**
+     * 随机字符串
+     * @return
+     */
     public static String getNonceStr() {
         Random random = new Random();
         return MD5.getMessageDigest(String.valueOf(random.nextInt(10000)).getBytes());
@@ -138,4 +167,18 @@ public class WXUtil {
         String appSign = MD5.getMessageDigest(sb.toString().getBytes());
         return appSign;
     }
+
+    private Order getOrder() {
+        Order order = new Order(Constants.APP_ID,
+                Constants.PARTNER_ID,
+                getNonceStr(),
+                "腾讯充值中心-QQ会员充值",
+                getOutTradeNo(),
+                "1",
+                "127.0.0.1",
+                "http://www.weixin.qq.com/wxpay/pay.php",
+                "APP");
+        return order;
+    }
+
 }
