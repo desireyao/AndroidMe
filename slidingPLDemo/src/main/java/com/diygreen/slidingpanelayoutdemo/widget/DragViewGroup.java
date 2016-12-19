@@ -1,11 +1,16 @@
 package com.diygreen.slidingpanelayoutdemo.widget;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.diygreen.slidingpanelayoutdemo.R;
@@ -17,57 +22,73 @@ import com.diygreen.slidingpanelayoutdemo.R;
  * <p/>
  * Description:
  */
-public class DragViewGroup extends RelativeLayout {
+public class DragViewGroup extends FrameLayout {
     private final String TAG = "DragViewGroup";
 
-    private RelativeLayout.LayoutParams layoutParams;
-    private int marginLeft;
+    private FrameLayout.LayoutParams layoutParams;
+    private int mRawX;
+    private int mRawY;
+
+    private ImageView dragview;
+
+    private int dragViewWidth = 0;
 
     public DragViewGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
-        layoutParams = new RelativeLayout.LayoutParams(1080,1920);
-//        View view = LayoutInflater.from(context).inflate(R.layout.item_left_layout,null);
-//        RelativeLayout.LayoutParams params = new LayoutParams(1080,1920);
-//        addView(view,params);
-        setX(-1000f);
+//        layoutParams = new FrameLayout.LayoutParams(1200 ,LayoutParams.WRAP_CONTENT);
+//        setLayoutParams(layoutParams);
+//        dragview = (ImageView) findViewById(R.id.iv_dragview);
+//        dragViewWidth = dragview.getWidth();
+//        Log.e(TAG,"dragViewWidth: " + dragViewWidth);
+         setX(-1080f);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+
+        dragview = (ImageView) findViewById(R.id.iv_dragview);
+        dragViewWidth = dragview.getWidth();
+        Log.e(TAG,"dragViewWidth: " + dragViewWidth);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-         setMeasuredDimension(1080,1920);
-    }
+//        /**
+//         * 获得此ViewGroup上级容器为其推荐的宽和高，以及计算模式
+//         */
+//        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+//        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+//        int sizeWidth = MeasureSpec.getSize(widthMeasureSpec);
+//        int sizeHeight = MeasureSpec.getSize(heightMeasureSpec);
 
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        View child = getChildAt(0);
-        Log.e(TAG,"getChildCount: " + getChildCount() + " child: " + child);
-        child.setVisibility(View.VISIBLE);
-        child.measure(r-l, b-t);
-        child.layout(0,0,1080,1920);
-}
+        measureChildren(widthMeasureSpec, heightMeasureSpec);
+
+        setMeasuredDimension(1080 + dragViewWidth,1920);
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.e("TAG", "ACTION_DOWN");
+                Log.e(TAG, "ACTION_DOWN");
                 return true;
             case MotionEvent.ACTION_MOVE:
+                Log.e(TAG, "ACTION_MOVE");
                 int x = (int) event.getRawX();
-                marginLeft = -1000 + x;
-                if(marginLeft < 0){
-                    setX(marginLeft);
+                mRawX = -(dragViewWidth + 1080) + x;
+                if(mRawX < 0){
+                    setX(mRawX);
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                Log.e("TAG", "ACTION_UP");
+                Log.e(TAG, "ACTION_UP");
                 x = (int) event.getRawX();
                 if (x > 540)
                     setX(0f);
                 else
-                    setX(-1000f);
-                setLayoutParams(layoutParams);
+                    setX(-1080f);
                 break;
         }
         return super.onTouchEvent(event);
