@@ -15,12 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".simple.SimpleUse2Activity" />
-        <activity
-            android:name=".slideclose.NextActivity"
-            android:label="NextActivity"
-            android:theme="@style/DIY.SlideClose.Transparent.Theme" />
-        <activity android:name=".simple.SimpleUse1Activity"></activity>
+
+
+        <activity android:name=".SecondActivity"></activity>
     </application>
 
 </manifest>

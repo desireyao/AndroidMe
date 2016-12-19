@@ -1,6 +1,7 @@
 package com.yaoh.code;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDialog;
@@ -26,26 +27,14 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        EditText editText = (EditText) findViewById(R.id.edittext);
-        editText.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                Log.e("TAG","beforeTextChanged");
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Log.e("TAG","onTextChanged");
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                Log.e("TAG","afterTextChanged: " + s.toString());
-            }
-        });
 //        addGuideImage(); // 添加引导页图片
 //        showMyDialog();
+    }
+
+    public void onClick(View view){
+        Intent intent = new Intent(this, SecondActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_left);
 
     }
 

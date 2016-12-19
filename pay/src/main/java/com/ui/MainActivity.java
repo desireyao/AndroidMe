@@ -22,13 +22,5 @@ public class MainActivity extends AppCompatActivity {
         payManager = new PayManager(this);
     }
 
-    public void aliPay(View view){
-        payManager.pay(null, PayManager.PAY_TYPE_ALI, new IPrepayCallback< Map<String, String>>() {
 
-            @Override
-            public void result(Map<String, String> result) {
-
-            }
-        });
-    }
 }
