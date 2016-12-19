@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.util.Log;
 
 import com.alipay.sdk.app.PayTask;
-import com.pay.base.BasePay;
+import com.pay.listener.IPay;
 import com.pay.listener.IPrepayCallback;
 
 import java.util.Map;
@@ -16,12 +16,13 @@ import java.util.Map;
  * <p/>
  * Description:
  */
-public class AliPay extends BasePay {
+public class AliPay implements IPay {
 
     private String prePayinfo;
+    private Activity mActivity;
 
     public AliPay(Activity mActivity) {
-        super(mActivity);
+        this.mActivity = mActivity;
     }
 
     @Override
@@ -36,10 +37,5 @@ public class AliPay extends BasePay {
                 callback.result(result);
             }
         }).start();
-    }
-
-    @Override
-    public void parse() {
-
     }
 }
