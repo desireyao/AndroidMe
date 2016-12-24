@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
-    <declare-styleable name="RoundDotProgressBar">
 
+    <declare-styleable name="RoundDotProgressBar">
         <attr name="CycleFinishColor" format="reference|color"></attr>
         <attr name="CycleDefaultColor" format="reference|color"></attr>
+    </declare-styleable>
 
+    <declare-styleable name="LongPressPauseView">
+        <attr name="speed" format="integer"/>
     </declare-styleable>
 </resources>
