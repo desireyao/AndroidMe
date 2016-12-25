@@ -42,8 +42,6 @@ public class LongPressPauseView extends View implements View.OnLongClickListener
     private int mStrokeWidth;         // 外层椭圆的线宽
     private int textSize;             // 中间文字的大小
 
-    private int speed = 500;
-
     private int INIT_MODE = 0;
     private int DRAWING_MODE = 1;
     private int CLEAR_MODE = 2;
