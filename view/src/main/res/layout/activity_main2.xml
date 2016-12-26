@@ -2,9 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/ninjafrog"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   >
 
     <!--<com.yaoh.view.xfermode.RoundImageViewByXfermode-->
     <!--android:layout_width="500px"-->
@@ -18,9 +17,22 @@
         <!--android:layout_centerInParent="true"-->
         <!--android:background="@drawable/ninjafrog" />-->
 
-    <FrameLayout
-        android:id="@+id/masklayout"
+    <!--<com.yaoh.view.pauseview.LongPressPauseView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:speed="300"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--/>-->
+
+    <com.yaoh.view.chart.LineChartView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="300dp"
+        android:padding="10dp"
+        android:background="@color/colorPrimaryMid"
+        />
+
+    <!--<com.yaoh.view.pathMeasure.PathView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
 
 </RelativeLayout>
