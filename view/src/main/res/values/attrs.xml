@@ -7,6 +7,20 @@
     </declare-styleable>
 
     <declare-styleable name="LongPressPauseView">
-        <attr name="speed" format="integer"/>
+        <attr name="speed" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="RunningSpeedProgress">
+        <attr name="ProgressColor" format="reference|color" />
+        <attr name="ProgressBackgroundColor" format="reference|color" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CustomImageView">
+        <attr name="borderRadius" format="dimension" />
+        <attr name="type" format="integer"/>
+        <attr name="src" format="reference" />
+    </declare-styleable>
+
+
 </resources>
