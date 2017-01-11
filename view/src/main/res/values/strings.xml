@@ -1,6 +1,22 @@
 <resources>
-    <string name="app_name">xw1030_test</string>
+    <string name="app_name">view</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="空气">空气</string>
+    <string name="详情">详情</string>
+    <string name="请走到开阔的户外运动吧">请走到开阔的户外运动吧</string>
+    <string name="GPS信号无法准确记录你的运动数据">GPS信号无法准确记录你的运动数据</string>
+    <string name="继续">继续</string>
+    <string name="继续跑步">继续跑步</string>
+    <string name="历史记录">历史记录</string>
+    <string name="距离和公里单位">距离(公里)</string>
+    <string name="消耗和单位">消耗(千卡)</string>
+    <string name="配速和单位">配速(分钟/公里)</string>
+    <string name="最低配速">最低配速</string>
+    <string name="最高配速">最高配速</string>
+    <string name="是否打开GPS开关">是否打开GPS开关?</string>
+    <string name="GPS未开启">GPS未开启</string>
+    <string name="是否结束本次跑步">是否结束本次跑步?</string>
 </resources>

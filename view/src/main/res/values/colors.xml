@@ -41,8 +41,12 @@
     <color name="gray_alpha_bg">#66000000</color>
 
     <color name="brown_running">#ff231a15</color>
-
-
     <color name="run_black_bg">#230015</color>
+
+    <color name="colorGreen">#24ff57</color>
+    <color name="colorGreenDark">#69bb64</color>
+
+    <color name="black_running">#211a14</color>
+
     <color name="vifrification">#00000000</color>   <!-- 透明 -->
 </resources>
