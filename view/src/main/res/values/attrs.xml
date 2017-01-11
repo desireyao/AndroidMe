@@ -17,9 +17,12 @@
 
 
     <declare-styleable name="CustomImageView">
-        <attr name="borderRadius" format="dimension" />
-        <attr name="type" format="integer"/>
-        <attr name="src" format="reference" />
+        <attr name="borderRadius" format="dimension"/>
+        <attr name="type">
+            <enum name="circle" value="0" />
+            <enum name="round" value="1" />
+        </attr>
+        <attr name="src" format="reference"/>
     </declare-styleable>
 
 

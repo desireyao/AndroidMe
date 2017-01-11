@@ -10,13 +10,10 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Bitmap.Config;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.View.MeasureSpec;
 
 import com.yaoh.view.R;
 
@@ -85,8 +82,8 @@ public class CustomImageView extends View
 			switch (attr)
 			{
 				case R.styleable.CustomImageView_src:
-//					mSrc = BitmapFactory.decodeResource(getResources(), a.getResourceId(attr, 0));
 					mSrc = BitmapFactory.decodeResource(getResources(), a.getResourceId(attr, 0));
+					Log.e("TAG","mSrc: " + mSrc);
 					break;
 				case R.styleable.CustomImageView_type:
 					type = a.getInt(attr, 0);// 默认为Circle
