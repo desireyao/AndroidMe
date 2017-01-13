@@ -13,16 +13,17 @@
     <declare-styleable name="RunningSpeedProgress">
         <attr name="ProgressColor" format="reference|color" />
         <attr name="ProgressBackgroundColor" format="reference|color" />
+        <attr name="ProgressTextSize" format="reference|dimension" />
     </declare-styleable>
 
 
     <declare-styleable name="CustomImageView">
-        <attr name="borderRadius" format="dimension"/>
+        <attr name="borderRadius" format="dimension" />
         <attr name="type">
             <enum name="circle" value="0" />
             <enum name="round" value="1" />
         </attr>
-        <attr name="src" format="reference"/>
+        <attr name="src" format="reference" />
     </declare-styleable>
 
 

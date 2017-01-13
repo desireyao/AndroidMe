@@ -11,5 +11,8 @@ public class RunningSpeedProgressActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_running_speed_progress);
+
+        RunningSpeedProgress speedProgress = (RunningSpeedProgress) findViewById(R.id.id_progress);
+        speedProgress.setParams(1f,"1","05'33''","10'00''");
     }
 }
