@@ -6,10 +6,6 @@
         <attr name="CycleDefaultColor" format="reference|color"></attr>
     </declare-styleable>
 
-    <declare-styleable name="LongPressPauseView">
-        <attr name="speed" format="integer" />
-    </declare-styleable>
-
     <declare-styleable name="RunningSpeedProgress">
         <attr name="ProgressColor" format="reference|color" />
         <attr name="ProgressBackgroundColor" format="reference|color" />
@@ -32,5 +28,17 @@
         <attr name="indicator_smooth" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="LongPressPauseView">
+        <attr name="PauseSpeed">
+            <enum name="low" value="1" />
+            <enum name="medium" value="2" />
+            <enum name="high" value="3" />
+        </attr>
+        <attr name="PauseBackgroudColor" format="reference|color" />
+        <attr name="PauseProgressColor" format="reference|color" />
+        <attr name="PauseProgressSecondColor" format="reference|color" />
+        <attr name="PauseTextSize" format="reference|dimension" />
+        <attr name="PauseText" format="reference|string" />
+    </declare-styleable>
 
 </resources>

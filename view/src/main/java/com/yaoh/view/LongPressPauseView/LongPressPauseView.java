@@ -1,6 +1,7 @@
-package com.yaoh.view.pauseview;
+package com.yaoh.view.LongPressPauseView;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -23,7 +24,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class LongPressPauseView extends View implements View.OnLongClickListener{
+public class LongPressPauseView extends View implements View.OnLongClickListener {
     private final String TAG = "LongPressPauseView";
     private Path mDst;
     private Path mPath;
@@ -40,7 +41,6 @@ public class LongPressPauseView extends View implements View.OnLongClickListener
     private int mRadius;              // 椭圆的半径值
     private int mRadiusBg;            // 填充背景椭圆的半径
     private int mStrokeWidth;         // 外层椭圆的线宽
-    private int textSize;             // 中间文字的大小
 
     private int INIT_MODE = 0;
     private int DRAWING_MODE = 1;
@@ -50,14 +50,15 @@ public class LongPressPauseView extends View implements View.OnLongClickListener
     private int mScreenWidth;   // 屏幕的宽
     private int mScreenHeight;  // 屏幕的高
 
-    private int mWidth;      // 此view的宽高
+    private int mWidth;         // 此view的宽高
     private int mHeight;
 
-    private String text = "长按暂停";
-
-    public LongPressPauseView(Context context) {
-        super(context);
-    }
+    private int mPauseSpeed;                    // 长按暂停的速度
+    private int mPauseTextSize;                 // 文字颜色
+    private String mPauseText;                      // 文字
+    private int mPauseBackgroudColor;           // 背景块的颜色
+    private int mPauseProgressColor;            // 前景进度条的颜色
+    private int PauseProgressSecondColor;       // 第二进度条的颜色
 
     private LongClickListener longClickListener;
 
@@ -65,11 +66,30 @@ public class LongPressPauseView extends View implements View.OnLongClickListener
         this.longClickListener = longClickListener;
     }
 
-    public interface LongClickListener{
+    public interface LongClickListener {
         void onLongClick();
     }
 
-    //    @Override
+    public LongPressPauseView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public LongPressPauseView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LongPressPauseView, defStyleAttr, 0);
+        mPauseSpeed = a.getInt(R.styleable.LongPressPauseView_PauseSpeed, 0);
+        mPauseTextSize = a.getDimensionPixelSize(R.styleable.LongPressPauseView_PauseTextSize, 14);
+        mPauseText = a.getString(R.styleable.LongPressPauseView_PauseText);
+        mPauseBackgroudColor = a.getColor(R.styleable.LongPressPauseView_PauseBackgroudColor, getResources().getColor(R.color.colorPrimary));
+        mPauseProgressColor = a.getColor(R.styleable.LongPressPauseView_PauseProgressColor, getResources().getColor(R.color.white_bg));
+        PauseProgressSecondColor = a.getColor(R.styleable.LongPressPauseView_PauseProgressSecondColor, getResources().getColor(R.color.gray_text_light));
+        a.recycle();
+
+        init();
+    }
+
+
+    @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
@@ -91,13 +111,10 @@ public class LongPressPauseView extends View implements View.OnLongClickListener
     private void initData() {
         mRadius = (mHeight - mPadding * 2) / 2;
         mRadiusBg = (mHeight - mPadding * 4) / 2;
-
         init();
     }
 
-
-    public LongPressPauseView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    private void init() {
         DisplayMetrics dm = getResources().getDisplayMetrics();
         mScreenWidth = dm.widthPixels;
         mScreenHeight = dm.heightPixels;
@@ -105,10 +122,7 @@ public class LongPressPauseView extends View implements View.OnLongClickListener
         mHeight = mScreenWidth / 5;
         mPadding = ViewUtil.dp2px(5);
         mStrokeWidth = ViewUtil.dp2px(3);
-        textSize = ViewUtil.sp2px(24);
-    }
 
-    private void init() {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
         mPaintText = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -116,73 +130,62 @@ public class LongPressPauseView extends View implements View.OnLongClickListener
         mPaintText.setStyle(Paint.Style.STROKE);
         mPaintText.setColor(Color.WHITE);
         mPaintText.setTextAlign(Paint.Align.CENTER);
-        mPaintText.setTextSize(textSize);
+        mPaintText.setTextSize(mPauseTextSize);
 
         mPath = new Path();
         mDst = new Path();
-        RectF rectF = new RectF(mPadding,mPadding,mWidth - mPadding,mHeight - mPadding);
-        mPath.addRoundRect(rectF,mRadius,mRadius,Path.Direction.CW);
+        RectF rectF = new RectF(mPadding, mPadding, mWidth - mPadding, mHeight - mPadding);
+        mPath.addRoundRect(rectF, mRadius, mRadius, Path.Direction.CW);
 
         mPathMeasure = new PathMeasure();
         mPathMeasure.setPath(mPath, true);
         mLength = mPathMeasure.getLength();
     }
 
-    public LongPressPauseView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
     float stop = 0;
-    float start =0;
+    float start = 0;
+
     @Override
     protected void onDraw(Canvas canvas) {
         mDst.reset();
         mDst.lineTo(0, 0);
 
         mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setColor(getResources().getColor(R.color.colorPrimary));
-        RectF bgRect = new RectF(mPadding*2,mPadding*2,mWidth - mPadding*2,mHeight - mPadding*2);
-        canvas.drawRoundRect(bgRect,mRadiusBg,mRadiusBg,mPaint);
+        mPaint.setColor(mPauseBackgroudColor);
+        RectF bgRect = new RectF(mPadding * 2, mPadding * 2, mWidth - mPadding * 2, mHeight - mPadding * 2);
+        canvas.drawRoundRect(bgRect, mRadiusBg, mRadiusBg, mPaint);
 
         int leftText = mWidth / 2;
         Paint.FontMetricsInt fontMetrics = mPaintText.getFontMetricsInt();
         float baseline = (bgRect.bottom + bgRect.top - fontMetrics.bottom - fontMetrics.top) / 2;
-        canvas.drawText(text,leftText,baseline, mPaintText);
+        canvas.drawText(mPauseText, leftText, baseline, mPaintText);
 
-        if(MODE_OF_DRAW == DRAWING_MODE){
-            RectF rect = new RectF(mPadding,mPadding,mWidth - mPadding,mHeight - mPadding);
+        if (MODE_OF_DRAW == DRAWING_MODE) {
+            RectF rect = new RectF(mPadding, mPadding, mWidth - mPadding, mHeight - mPadding);
             mPaint.setStyle(Paint.Style.STROKE);
             mPaint.setStrokeWidth(mStrokeWidth);
-            mPaint.setColor(getResources().getColor(R.color.gray_dark));
-            canvas.drawRoundRect(rect,mRadius,mRadius,mPaint);
+            mPaint.setColor(PauseProgressSecondColor);
+            canvas.drawRoundRect(rect, mRadius, mRadius, mPaint);
 
             mPaint.setStyle(Paint.Style.STROKE);
             mPaint.setStrokeWidth(mStrokeWidth);
-            mPaint.setColor(getResources().getColor(R.color.white));
-            if(mAnimValue < 1.f){
+            mPaint.setColor(mPauseProgressColor);
+            if (mAnimValue < 1.f) {
                 start = mLength * 0.25f;
-                stop =  mLength * (mAnimValue + 0.05f);
+                stop = mLength * (mAnimValue);
                 mPathMeasure.getSegment(start, stop, mDst, true);
-                Log.e(TAG,"< 1.0f start: " + start + " stop:" +stop + " mAnimValue:" + mAnimValue);
-
-            }else if(mAnimValue >= 1.f && mAnimValue <= 1.25f){
+            } else if (mAnimValue >= 1.f && mAnimValue <= 1.25f) {
                 mPathMeasure.getSegment(mLength * 0.25f, mLength, mDst, true);
                 canvas.drawPath(mDst, mPaint);
-                stop = mLength * (mAnimValue - 1 + 0.05f);
+                stop = mLength * (mAnimValue - 1);
                 start = 0;
                 mPathMeasure.getSegment(start, stop, mDst, true);
-                Log.e(TAG,"> 1.0f start: " + start + " stop:" +stop + " mAnimValue: " + mAnimValue);
             }
             canvas.drawPath(mDst, mPaint);
-        }else if(MODE_OF_DRAW == CLEAR_MODE){
+        } else if (MODE_OF_DRAW == CLEAR_MODE) {
             mDst.reset();
             mDst.lineTo(0, 0);
         }
-
-    }
-
-    public void setText(String text){
-        this.text = text;
     }
 
     @Override
@@ -192,7 +195,7 @@ public class LongPressPauseView extends View implements View.OnLongClickListener
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 executeFixedDelay();
                 return true;
@@ -200,7 +203,7 @@ public class LongPressPauseView extends View implements View.OnLongClickListener
                 break;
             case MotionEvent.ACTION_UP:
                 executor.shutdown();
-                if(mAnimValue < mAnimValueMax){
+                if (mAnimValue < mAnimValueMax) {
                     MODE_OF_DRAW = CLEAR_MODE;
                     invalidate();
                 }
@@ -221,12 +224,12 @@ public class LongPressPauseView extends View implements View.OnLongClickListener
                 new Runnable() {
                     @Override
                     public void run() {
-                        mAnimValue += 0.001f;
-                        if(mAnimValue <= mAnimValueMax){
+                        mAnimValue += 0.002f * mPauseSpeed;
+                        if (mAnimValue <= mAnimValueMax) {
                             MODE_OF_DRAW = DRAWING_MODE;
                             postInvalidate();
-                        }else{
-                            if(longClickListener !=null){
+                        } else {
+                            if (longClickListener != null) {
                                 handler.sendEmptyMessage(0);
                             }
                             executor.shutdown();
@@ -234,10 +237,10 @@ public class LongPressPauseView extends View implements View.OnLongClickListener
                             postInvalidate();
                         }
                     }
-                }, 0,5,TimeUnit.MILLISECONDS);
+                }, 0, 5, TimeUnit.MILLISECONDS);
     }
 
-    private Handler handler = new Handler(Looper.getMainLooper()){
+    private Handler handler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
