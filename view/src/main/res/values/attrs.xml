@@ -26,5 +26,11 @@
         <attr name="src" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="IndicatorView">
+        <attr name="indicator_icon" format="reference" />
+        <attr name="indicator_margin" format="reference|dimension" />
+        <attr name="indicator_smooth" format="boolean" />
+    </declare-styleable>
+
 
 </resources>

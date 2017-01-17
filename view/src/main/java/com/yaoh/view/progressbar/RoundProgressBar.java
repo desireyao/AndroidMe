@@ -1,8 +1,6 @@
 package com.yaoh.view.progressbar;
 
 import android.content.Context;
-import android.graphics.drawable.shapes.RoundRectShape;
-import android.graphics.drawable.shapes.Shape;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 
@@ -15,7 +13,6 @@ import android.widget.ProgressBar;
  * Description:
  */
 public class RoundProgressBar extends ProgressBar{
-
     public RoundProgressBar(Context context, AttributeSet attrs) {
         this(context, attrs,0);
     }
@@ -25,13 +22,11 @@ public class RoundProgressBar extends ProgressBar{
     }
 
     @Override
-    protected synchronized void onMeasure(int widthMeasureSpec,
-                                          int heightMeasureSpec) {
+    protected synchronized void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     public final int roundCorners = 15;
-
 //    @Override
 //    Shape getDrawableShape() {
 //        final float[] roundedCorners = new float[] { 0, 0, 0, 0, 0, 0, 0, 0 };

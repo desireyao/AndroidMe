@@ -19,4 +19,8 @@
     <string name="是否打开GPS开关">是否打开GPS开关?</string>
     <string name="GPS未开启">GPS未开启</string>
     <string name="是否结束本次跑步">是否结束本次跑步?</string>
+    <string name="title_activity_main4">Main4Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
