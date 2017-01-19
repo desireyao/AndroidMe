@@ -1,9 +1,10 @@
 package com.yaoh.view.RunningSpeedProgress;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.yaoh.view.R;
+
 
 public class RunningSpeedProgressActivity extends AppCompatActivity {
 
