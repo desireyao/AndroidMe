@@ -1,1 +1,1 @@
-include ':view', ':testjava', ':code', ':wxpaydemo', ':alipaydemo', ':pay', ':AmapDEMO'
+include ':view', ':testjava', ':code', ':wxpaydemo', ':alipaydemo', ':pay', ':AmapDEMO', ':meizublur'

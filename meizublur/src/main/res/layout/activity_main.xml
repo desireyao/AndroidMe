@@ -1,0 +1,40 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/blur_demo_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dip"
+        android:paddingRight="16dip"
+        android:scrollbarStyle="outsideOverlay"
+        android:clipToPadding="false" />
+    
+    <com.meizu.flyme.blur.view.BlurRelativeLayout
+        android:id="@+id/blur_rect_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:paddingLeft="16dip"
+        android:paddingRight="16dip"
+        android:layout_marginTop="48dp"
+        android:layout_gravity="top" />
+
+    <com.meizu.flyme.blur.view.BlurRelativeLayout
+        android:id="@+id/blur_rect_view1"
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:paddingLeft="16dip"
+        android:paddingRight="16dip"
+        android:layout_gravity="center" />
+
+    <com.meizu.flyme.blur.view.BlurRelativeLayout
+        android:id="@+id/blur_rect_view2"
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:paddingLeft="16dip"
+        android:paddingRight="16dip"
+        android:layout_gravity="bottom" />
+
+</FrameLayout>
