@@ -15,12 +15,11 @@
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_centerInParent="true"
-        app:PauseSpeed="medium"
-        app:PauseText="长按暂停"
-        app:PauseTextSize="18sp"
         app:PauseBackgroudColor="@color/colorPrimary"
         app:PauseProgressColor="@color/white_bg"
         app:PauseProgressSecondColor="@color/gray_text_light"
-        />
+        app:PauseSpeed="medium"
+        app:PauseText="长按暂停"
+        app:PauseTextSize="18sp" />
 
 </RelativeLayout>

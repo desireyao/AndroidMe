@@ -55,7 +55,7 @@ public class LongPressPauseView extends View implements View.OnLongClickListener
 
     private int mPauseSpeed;                    // 长按暂停的速度
     private int mPauseTextSize;                 // 文字颜色
-    private String mPauseText;                      // 文字
+    private String mPauseText;                  // 文字
     private int mPauseBackgroudColor;           // 背景块的颜色
     private int mPauseProgressColor;            // 前景进度条的颜色
     private int PauseProgressSecondColor;       // 第二进度条的颜色
