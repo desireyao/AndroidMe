@@ -1,7 +1,5 @@
 package com.example.question;
 
-import sun.applet.Main;
-
 /**
  * Package com.example.question.
  * Created by yaoh on 2016/11/08.

@@ -3,8 +3,6 @@ package com.example;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import sun.rmi.runtime.Log;
-
 /**
  * Package com.example.
  * Created by yaoh on 2016/10/21.
@@ -16,7 +14,6 @@ public class Bank {
 
     private static int totalMoney = 1000;
 
-    /* 创建一个读写锁 */
     ReadWriteLock rwlock = new ReentrantReadWriteLock();
 
     public void getMoney() {

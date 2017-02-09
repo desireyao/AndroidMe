@@ -49,12 +49,9 @@ public class Main {
         }
 
         //-------------------------------------------
-        // 接近的数字
         int nearNum = 1000;
 
-        // 差值实始化
         int diffNum = Math.abs(list.get(0) - nearNum);
-        // 最终结果
         int result = list.get(0);
         for (Integer integer : list) {
             int diffNumTemp = Math.abs(integer - nearNum);

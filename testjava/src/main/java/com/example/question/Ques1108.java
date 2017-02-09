@@ -25,7 +25,6 @@ public class Ques1108 {
         System.out.println(animals);  // 1
     }
 }
-    // 动物类
     class Animal implements Comparable<Animal>{
         private String name;
         private int order;
