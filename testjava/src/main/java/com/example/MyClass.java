@@ -12,9 +12,15 @@ public class MyClass {
 //        }
 //        testByte();
 
-        int a = Integer.MAX_VALUE;
-        int b = (int)30 * 24 * 60 * 60 * 1000;
-        System.out.print("a:" + a + " b:" + b);
+        String[] a = new String[]{"10"};
+        String b = "10";
+        method(a,b);
+        System.out.print("a:" + a[0] + " b:" + b);
+    }
+
+    public static void method(String[] a,String b){
+        a[0] = "100";
+        b = "100";
     }
 
     static class Task implements Runnable{
