@@ -1,4 +1,4 @@
-package com.meizu.flyme.samples;
+package com.github.yuweiguocn.demo.greendao;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
