@@ -1,4 +1,4 @@
-package com.yaoh.animationdemo;
+package com.dragleftdemo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.yaoh.animationdemo", appContext.getPackageName());
+        assertEquals("com.dragleftdemo", appContext.getPackageName());
     }
 }
