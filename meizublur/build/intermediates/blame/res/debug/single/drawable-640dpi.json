@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "D:\\AndroidStudioProjectsMy\\code\\AndroidMe\\meizublur\\build\\intermediates\\res\\merged\\debug\\drawable-640dpi\\mz_titlebar_background_bottom_blank.9.png",
+        "source": "D:\\AndroidStudioProjectsMy\\code\\AndroidMe\\meizublur\\src\\main\\res\\drawable-640dpi\\mz_titlebar_background_bottom_blank.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjectsMy\\code\\AndroidMe\\meizublur\\build\\intermediates\\res\\merged\\debug\\drawable-640dpi\\account.png",
+        "source": "D:\\AndroidStudioProjectsMy\\code\\AndroidMe\\meizublur\\src\\main\\res\\drawable-640dpi\\account.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjectsMy\\code\\AndroidMe\\meizublur\\build\\intermediates\\res\\merged\\debug\\drawable-640dpi\\search.png",
+        "source": "D:\\AndroidStudioProjectsMy\\code\\AndroidMe\\meizublur\\src\\main\\res\\drawable-640dpi\\search.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjectsMy\\code\\AndroidMe\\meizublur\\build\\intermediates\\res\\merged\\debug\\drawable-640dpi\\actionbar_bg.png",
+        "source": "D:\\AndroidStudioProjectsMy\\code\\AndroidMe\\meizublur\\src\\main\\res\\drawable-640dpi\\actionbar_bg.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjectsMy\\code\\AndroidMe\\meizublur\\build\\intermediates\\res\\merged\\debug\\drawable-640dpi\\music.png",
+        "source": "D:\\AndroidStudioProjectsMy\\code\\AndroidMe\\meizublur\\src\\main\\res\\drawable-640dpi\\music.png"
+    }
+]

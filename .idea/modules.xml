@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AmapDEMO/AmapDEMO.iml" filepath="$PROJECT_DIR$/AmapDEMO/AmapDEMO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidMe.iml" filepath="$PROJECT_DIR$/AndroidMe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/alipaydemo/alipaydemo.iml" filepath="$PROJECT_DIR$/alipaydemo/alipaydemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/code/code.iml" filepath="$PROJECT_DIR$/code/code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/meizublur/meizublur.iml" filepath="$PROJECT_DIR$/meizublur/meizublur.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pay/pay.iml" filepath="$PROJECT_DIR$/pay/pay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testjava/testjava.iml" filepath="$PROJECT_DIR$/testjava/testjava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/view/view.iml" filepath="$PROJECT_DIR$/view/view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wxpaydemo/wxpaydemo.iml" filepath="$PROJECT_DIR$/wxpaydemo/wxpaydemo.iml" />
+    </modules>
+  </component>
+</project>
