@@ -52,6 +52,8 @@ public class PathTracingView extends View implements View.OnLongClickListener{
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
           setMeasuredDimension(ViewWidth,ViewHeight);
+
+
     }
 
     public PathTracingView(Context context, AttributeSet attrs) {
