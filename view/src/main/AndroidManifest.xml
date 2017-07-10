@@ -73,9 +73,17 @@
         <!-- </intent-filter> -->
         <!-- </activity> -->
 
-        <activity android:name=".glide.GlideActivity">
+        <!--<activity android:name=".glide.GlideActivity">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <activity android:name=".arc.ArcActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
