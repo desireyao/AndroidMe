@@ -93,6 +93,9 @@ public class SportProgressView extends View {
 
             canvas.drawArc(rect, 180 + i * 5, 5, false, mPaint);
         }
+        mPaint.setStrokeCap(Paint.Cap.BUTT);
+        mPaint.setColor(getResources().getColor(R.color.white_bg));
+        canvas.drawArc(rect, 180 + 34 * 5, 5, false, mPaint);
 
         canvas.drawArc(rect, 180, 90, false, mPaintProgress);
     }
