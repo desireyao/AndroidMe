@@ -4,13 +4,17 @@ import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.SweepGradient;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 
 import com.yaoh.view.R;
 import com.yaoh.view.utils.ViewUtil;
@@ -21,6 +25,10 @@ import com.yaoh.view.utils.ViewUtil;
 
 public class SportProgressView extends View {
     private static final String TAG = "SportProgressView";
+    private int[] colors = new int[]{Color.parseColor("#00CDCD")
+            , Color.parseColor("#00CDCD"),Color.parseColor("#00CDCD")
+            , Color.parseColor("#FF4500"),Color.parseColor("#FF4500")};
+
     private Paint mPaint;
     private Paint mPaintProgress;
 
@@ -86,44 +94,39 @@ public class SportProgressView extends View {
         super.onDraw(canvas);
         Log.e(TAG, "onDraw--->");
         RectF rect = new RectF(50, 500, 1000, 1500);
-        if (isFirst) {
-            canvas.saveLayerAlpha(50, 500, 1000, 1500, Canvas.ALL_SAVE_FLAG);
-            for (int i = 0; i < 36; i++) {
-                if (i == 0 || i == 35) {
-                    mPaint.setStrokeCap(Paint.Cap.ROUND);
-                } else {
-                    mPaint.setStrokeCap(Paint.Cap.BUTT);
-                }
-
-                if (i % 2 == 0) {
-                    mPaint.setColor(getResources().getColor(R.color.white_bg));
-                } else {
-                    mPaint.setColor(getResources().getColor(R.color.gray_mid));
-                }
-                canvas.drawArc(rect, 180 + i * 5, 5, false, mPaint);
+        for (int i = 0; i < 36; i++) {
+            if (i == 0 || i == 35) {
+                mPaint.setStrokeCap(Paint.Cap.ROUND);
+            } else {
+                mPaint.setStrokeCap(Paint.Cap.BUTT);
             }
-            mPaint.setStrokeCap(Paint.Cap.BUTT);
-            mPaint.setColor(getResources().getColor(R.color.white_bg));
-            canvas.drawArc(rect, 180 + 34 * 5, 5, false, mPaint);
-            canvas.restore();
 
+            if (i % 2 == 0) {
+                mPaint.setColor(getResources().getColor(R.color.white_bg));
+            } else {
+                mPaint.setColor(getResources().getColor(R.color.gray_mid));
+            }
+            canvas.drawArc(rect, 180 + i * 5, 5, false, mPaint);
+        }
+
+//        mPaintProgress.setColor(ColorUtils.getCurrentColor(mProgress / 90f, colors));
+        mPaintProgress.setShader(new SweepGradient(1080 / 2, 1920 / 2, colors, null));
+        canvas.drawArc(rect, 180, mProgress, false, mPaintProgress);
+        if (isFirst) {
             startAnimation();
             isFirst = false;
-        } else {
-            canvas.drawArc(rect, 180, mProgress, false, mPaintProgress);
-            canvas.save();
         }
     }
 
 
     public void startAnimation() {
-        ValueAnimator animator = ValueAnimator.ofFloat(0, 90);
+        ValueAnimator animator = ValueAnimator.ofFloat(0, 180);
         animator.setDuration(1000).start();
 //        animator.setInterpolator(90);
+        animator.setInterpolator(new AccelerateInterpolator());//加速减速
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-//                mBlueBall.setTranslationY((Float) animation.getAnimatedValue());
                 mProgress = (float) animation.getAnimatedValue();
                 invalidate();
             }
